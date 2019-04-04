@@ -6,15 +6,15 @@ public class modulus {
 	
 		int startNum = 424;
 		int[] arr = new int[15];
-		String strOutput = "";
 		
 		populateArray(arr);
 		reverseArray(arr);
 		System.out.println("output: " + giveMeBinary(startNum, arr));
-		
 	}
 	
-	
+	/*
+	 * Initializes the array with the numbers for binary, flexible for any size array
+	 */
 	private static int[] populateArray(int[] arr) {
 		arr[0] = 1;
 		for(int i=1; i < arr.length; i++) {
@@ -23,18 +23,17 @@ public class modulus {
 		return arr;
 	}
 	
-	
+	/*
+	 * takes a value and returns the value as a binary String
+	 */
 	private static String giveMeBinary(int value, int[] arr) {
 		String temp = "";
 		int remainder = value;
 		
 		for(int i=0; i<arr.length; i++) {
-			System.out.print("i=" + i);
-			System.out.print(" remainder=" + remainder);
-			System.out.print(" arr["+i+"]=" + arr[i]);
-			System.out.println("");
+			System.out.print("i=" + i + " remainder=" + remainder + "arr["+i+"]=" + arr[i]);
 			if(remainder / arr[i] < 1) {
-				if(temp.indexOf("1") > -1)
+				if(temp.indexOf("1") > -1)  //this removes leading zeros
 					temp = temp + "0";
 			}
 			else {
@@ -43,10 +42,12 @@ public class modulus {
 			}
 		}
 		
-		
 		return temp;
 	}
 	
+	/*
+	 * reverses the array so the largest number is first
+	 */
 	private static int[] reverseArray(int[] array) {
 		for(int i=0; i<array.length/2; i++){
 			  int temp = array[i];
